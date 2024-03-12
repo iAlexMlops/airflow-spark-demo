@@ -9,7 +9,7 @@ with DAG(
 
     train_model = BashOperator(
         task_id='train_model',
-        bash_command='tree && python scripts/train.py',
+        bash_command='find . && python scripts/train.py',
         dag=dag,
     )
 
