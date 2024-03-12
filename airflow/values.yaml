@@ -1,0 +1,13 @@
+airflow:
+  dags:
+    gitSync:
+      enabled: true
+      repo: https://github.com/iAlexMlops/airflow-spark-demo.git
+      branch: main
+
+      subPath: "dags"
+      period: 15s
+      wait: ~
+
+      containerName: git-sync
+
