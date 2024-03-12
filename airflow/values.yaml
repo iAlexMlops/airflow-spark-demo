@@ -1,4 +1,6 @@
 airflow:
+  webserverSecretKey: admin
+
   dags:
     gitSync:
       enabled: true
@@ -10,4 +12,3 @@ airflow:
       wait: ~
 
       containerName: git-sync
-

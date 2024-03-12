@@ -10,7 +10,7 @@ Train dag for demo
 """
 
 with DAG(
-    dag_id="{{ dag_name }}",
+    dag_id="model_train",
     description=DESCRIPTION,
     catchup=False,
     doc_md=DOC_MD,
