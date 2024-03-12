@@ -18,7 +18,7 @@ with DAG(
     task_submit = SparkKubernetesOperator(
         task_id='submit',
         namespace="airflow",
-        application_file="local:///app/train.py",
+        application_file="train.yaml",
         do_xcom_push=True,
         dag=dag
     )

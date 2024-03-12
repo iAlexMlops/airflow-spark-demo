@@ -1,2 +1,4 @@
 spark-operator:
   sparkJobNamespace: "airflow"
+  rbac:
+    createClusterRole: false
