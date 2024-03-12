@@ -16,7 +16,7 @@ with DAG(
 
     train_model = BashOperator(
         task_id='train_model',
-        bash_command='python scripts/train.yaml',
+        bash_command='python scripts/train.py',
         dag=dag,
     )
 
