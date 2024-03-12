@@ -3,13 +3,13 @@ from airflow.providers.cncf.kubernetes.operators.spark_kubernetes import SparkKu
 from airflow.providers.cncf.kubernetes.sensors.spark_kubernetes import SparkKubernetesSensor
 
 
-DESCRIPTION = "Description for train dag"
+DESCRIPTION = "Description for inference dag"
 DOC_MD = """
-Train dag for demo
+Inference dag for demo
 """
 
 with DAG(
-    dag_id="model_train",
+    dag_id="model_inference",
     description=DESCRIPTION,
     catchup=False,
     doc_md=DOC_MD,
