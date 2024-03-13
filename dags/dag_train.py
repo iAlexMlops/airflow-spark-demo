@@ -1,8 +1,12 @@
+from datetime import datetime
+
 from airflow import DAG
 from airflow.providers.cncf.kubernetes.operators.spark_kubernetes import SparkKubernetesOperator
 from airflow.providers.cncf.kubernetes.sensors.spark_kubernetes import SparkKubernetesSensor
 
 
+START_DATE = datetime.strptime("2024-05-26", "%Y-%m-%d")
+SCHEDULE_INTERVAL = "1 1 * * *"
 DESCRIPTION = "Description for train dag"
 DOC_MD = """
 train dag for demo
