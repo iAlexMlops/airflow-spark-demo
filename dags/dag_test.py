@@ -4,11 +4,11 @@ from airflow import DAG
 from airflow.providers.cncf.kubernetes.operators.spark_kubernetes import SparkKubernetesOperator
 from airflow.providers.cncf.kubernetes.sensors.spark_kubernetes import SparkKubernetesSensor
 
-START_DATE = datetime.strptime("{{ start_date }}", "%Y-%m-%d")
-SCHEDULE_INTERVAL = None
+START_DATE = datetime.strptime("2024-06-05", "%Y-%m-%d")
+SCHEDULE_INTERVAL = "1 0 * * *"
 
 with DAG(
-        dag_id="test",
+        dag_id="model_test",
         schedule_interval=SCHEDULE_INTERVAL,
         start_date=START_DATE,
         catchup=False,
