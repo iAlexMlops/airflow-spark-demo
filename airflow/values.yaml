@@ -1,13 +1,17 @@
 airflow:
   webserverSecretKey: admin
 
-  defaultAirflowTag: "2.5.3"
-  airflowVersion: "2.5.3"
+  defaultAirflowTag: "2.8.3"
+  airflowVersion: "2.8.3"
   dags:
+    persistence:
+      enabled: true
     gitSync:
       enabled: true
       repo: https://github.com/iAlexMlops/airflow-spark-demo.git
       branch: main
+
       subPath: "dags"
-      wait: 15
+      period: 15s
+
       containerName: git-sync
