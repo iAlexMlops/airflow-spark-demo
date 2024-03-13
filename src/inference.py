@@ -5,6 +5,7 @@ from loguru import logger
 from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import train_test_split
 
+
 logger.info("Инициализация Spark сессии")
 spark = SparkSession.builder.appName("IrisSklearnPrediction").getOrCreate()
 
