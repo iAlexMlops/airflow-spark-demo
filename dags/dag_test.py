@@ -27,7 +27,7 @@ with DAG(
     pi_example_path = pathlib.Path(__file__).parent.resolve()
     t1 = SparkKubernetesOperator(
         task_id="spark_pi_submit",
-        namespace="default",
+        namespace="airflow",
         application_file="spark-pi.yaml",
         do_xcom_push=True,
         dag=dag,
@@ -35,7 +35,7 @@ with DAG(
 
     t2 = SparkKubernetesSensor(
         task_id="spark_pi_monitor",
-        namespace="default",
+        namespace="airflow",
         application_name="{{ task_instance.xcom_pull(task_ids='spark_pi_submit')['metadata']['name'] }}",
         dag=dag,
     )

@@ -1,11 +1,11 @@
 airflow:
-  images:
-    airflow:
-      repository: airflow
-      tag: fix-v1
+#  images:
+#    airflow:
+#      repository: airflow
+#      tag: fix-v2
 
-  defaultAirflowTag: "2.8.3"
-  airflowVersion: "2.8.3"
+  defaultAirflowTag: "2.8.1"
+  airflowVersion: "2.8.1"
 
   webserverSecretKey: admin
 
