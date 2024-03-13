@@ -3,7 +3,9 @@ LABEL authors="Alex Egorov"
 
 USER root
 
-RUN pip install scikit-learn loguru
+COPY requirements.txt requirements.txt
+RUN pip install -r requirements.txt
+
 COPY src /app
 
 USER spark
