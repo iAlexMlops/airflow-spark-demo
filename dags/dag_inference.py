@@ -1,8 +1,12 @@
+from datetime import datetime
+
 from airflow import DAG
 from airflow.providers.cncf.kubernetes.operators.spark_kubernetes import SparkKubernetesOperator
 from airflow.providers.cncf.kubernetes.sensors.spark_kubernetes import SparkKubernetesSensor
 
 
+START_DATE = datetime.strptime("2024-05-26", "%Y-%m-%d")
+SCHEDULE_INTERVAL = "1 1 * * *"
 DESCRIPTION = "Description for inference dag"
 DOC_MD = """
 Inference dag for demo
@@ -11,6 +15,8 @@ Inference dag for demo
 with DAG(
     dag_id="model_inference",
     description=DESCRIPTION,
+    schedule_interval=SCHEDULE_INTERVAL,
+    start_date=START_DATE,
     catchup=False,
     doc_md=DOC_MD,
 ) as dag:
