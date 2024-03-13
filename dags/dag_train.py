@@ -15,6 +15,8 @@ train dag for demo
 with DAG(
     dag_id="model_train",
     description=DESCRIPTION,
+    schedule_interval=SCHEDULE_INTERVAL,
+    start_date=START_DATE,
     catchup=False,
     doc_md=DOC_MD,
 ) as dag:
