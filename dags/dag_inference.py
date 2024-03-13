@@ -5,8 +5,8 @@ from airflow.providers.cncf.kubernetes.operators.spark_kubernetes import SparkKu
 from airflow.providers.cncf.kubernetes.sensors.spark_kubernetes import SparkKubernetesSensor
 
 
-START_DATE = datetime.strptime("2024-05-26", "%Y-%m-%d")
-SCHEDULE_INTERVAL = "1 1 * * *"
+START_DATE = datetime.strptime("2023-05-26", "%Y-%m-%d")
+SCHEDULE_INTERVAL = "1 0 * * *"
 DESCRIPTION = "Description for inference dag"
 DOC_MD = """
 Inference dag for demo
