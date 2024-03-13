@@ -1,8 +1,14 @@
 airflow:
-  webserverSecretKey: admin
+  images:
+    airflow:
+      repository: airflow
+      tag: fix-v1
 
   defaultAirflowTag: "2.8.3"
   airflowVersion: "2.8.3"
+
+  webserverSecretKey: admin
+
   dags:
     persistence:
       enabled: true
