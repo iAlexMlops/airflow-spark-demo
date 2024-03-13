@@ -1,6 +1,8 @@
 airflow:
   webserverSecretKey: admin
 
+  defaultAirflowTag: "2.6.0"
+  airflowVersion: "2.6.0"
   dags:
     gitSync:
       enabled: true
