@@ -1,20 +1,32 @@
-# Импортируем необходимые библиотеки
+from pyspark.sql import SparkSession
 from sklearn.datasets import load_iris
 from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import train_test_split
 from joblib import dump
+import pandas as pd
+from loguru import logger
 
-# Загрузим датасет Iris
+
+logger.info("Инициализация Spark сессии")
+spark = SparkSession.builder.appName("IrisSklearnTraining").getOrCreate()
+
+logger.info("Загрузка датасета Iris")
 iris = load_iris()
-X, y = iris.data, iris.target
+iris_df = pd.DataFrame(iris.data, columns=iris.feature_names)
+iris_df['target'] = iris.target
+iris_df = spark.createDataFrame(iris_df).toPandas()
 
-# Разделим данные на обучающую и тестовую выборки
+logger.info("Разделение данных на обучающую и тестовую выборки")
+X = iris_df.drop('target', axis=1)
+y = iris_df['target']
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
-# Создаем и обучаем модель логистической регрессии
+logger.info("Обучение модели Logistic Regression")
 model = LogisticRegression(max_iter=200)
 model.fit(X_train, y_train)
 
-# Сохраняем обученную модель
-dump(model, 'iris_model.joblib')
-print("Модель обучена и сохранена как 'iris_model.joblib'")
+logger.info("Сохранение обученной модели")
+dump(model, 'iris_model_sklearn.joblib')
+
+logger.info("Обучение модели завершено")
+spark.stop()

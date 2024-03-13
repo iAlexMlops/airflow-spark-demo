@@ -3,7 +3,7 @@ LABEL authors="Alex Egorov"
 
 USER root
 
-RUN pip install scikit-learn
+RUN pip install scikit-learn loguru
 COPY src /app
 
 USER spark
